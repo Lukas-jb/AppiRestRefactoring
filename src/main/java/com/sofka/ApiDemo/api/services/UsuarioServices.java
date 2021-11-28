@@ -17,8 +17,13 @@ public class UsuarioServices {
         return (ArrayList<UsuarioModel>) usuarioRepository.findAll();
     }
 
-    public UsuarioModel guardarUsuario(UsuarioModel usuario){
-        return usuarioRepository.save(usuario);
+    public String guardarUsuario(UsuarioModel usuario){
+        try{
+            usuarioRepository.save(usuario);
+            return "Guardado exitoso";
+        }catch(Exception e){
+            return null;
+        }
     }
 
     public Optional<UsuarioModel> obtenerPorId(Long id){
