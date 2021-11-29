@@ -43,4 +43,11 @@ public class UsuarioServices {
             return false;
         }
     }
+    public void borrarUsuario(UsuarioModel usuario){
+        usuarioRepository.deleteById(usuario.getId());
+    }
+
+    public UsuarioModel obtenerporEmail(UsuarioModel usuario){
+        return usuarioRepository.findByEmail(usuario.getEmail());
+    }
 }

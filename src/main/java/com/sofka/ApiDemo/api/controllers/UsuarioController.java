@@ -14,6 +14,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/usuario" )
+@CrossOrigin(origins = "http://localhost:8080")
 public class UsuarioController {
     @Autowired
     UsuarioServices usuarioService;
@@ -45,6 +46,15 @@ public class UsuarioController {
             return "Se eliminó el usuario con id " + id;
         }else{
             return "No pudo eliminar el usuario con id" + id;
+        }
+    }
+    @GetMapping("/email")
+    public UsuarioModel obtenerporEmail(@RequestBody UsuarioModel user) {
+        UsuarioModel userModel = usuarioService.obtenerporEmail(user);
+        if(userModel != null) {
+            return this.usuarioService.obtenerporEmail(user);
+        } else {
+            return null;
         }
     }
 
